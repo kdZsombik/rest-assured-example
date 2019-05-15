@@ -2,17 +2,23 @@ package rest.examples;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 
-public class PostRequestExample {
+public class PutRequestExample {
 
     @BeforeEach
     void setUp()
     {
-        RestAssured.baseURI = "http://localhost:8080/";
+        RestAssured.baseURI = "http://localhost";
+    }
+
+    @AfterEach
+    public void tearDown(){
+        RestAssured.reset();
     }
 
     @Test
