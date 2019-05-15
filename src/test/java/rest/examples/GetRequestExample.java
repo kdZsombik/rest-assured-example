@@ -1,18 +1,15 @@
 package rest.examples;
 
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.when;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.lessThan;
-
 
 
 public class GetRequestExample {
@@ -25,10 +22,12 @@ public class GetRequestExample {
         RestAssured.port = 80;
     }
 
+
     @Test
     @DisplayName("Testing that my Get Request has ")
     public void simpleGetRequestWithStatusCode()
     {
+        RestAssured.reset();
         when().get("/country/get/all").then()
                 .statusCode(200);
     }
@@ -37,7 +36,7 @@ public class GetRequestExample {
     public void simpleGetRequestWithBodyValidation()
     {
         when().get("/country/get/all")
-                .then().body("messages",contains("Total"));
+                .then().body("RestResponse.result[0].name",containsString("Afghanistan"));
 
     }
 
@@ -49,4 +48,5 @@ public class GetRequestExample {
         .then().time(lessThan(20L),TimeUnit.SECONDS);
 
     }
+
 }

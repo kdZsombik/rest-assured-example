@@ -23,6 +23,7 @@ dependencyManagement {
         dependency 'io.rest-assured:rest-assured:4.0.0'
         dependency "org.junit.jupiter:junit-jupiter-api:$junit5"
         dependency "org.junit.jupiter:junit-jupiter-engine:$junit5"
+        dependency 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     }
 }
 
@@ -30,6 +31,7 @@ dependencies{
     testImplementation 'io.rest-assured:rest-assured'
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 }
 
 test {
